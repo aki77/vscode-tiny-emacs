@@ -1,29 +1,56 @@
-'use strict';
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+"use strict";
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+import {
+  window,
+  commands,
+  ExtensionContext,
+  StatusBarAlignment,
+  StatusBarItem
+} from "vscode";
 
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "emacs-mark-mode" is now active!');
+const statusBarItem: StatusBarItem = window.createStatusBarItem(
+  StatusBarAlignment.Left
+);
+statusBarItem.text = "mark mode";
 
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', () => {
-        // The code you place here will be executed every time your command is executed
+let markMode = false;
 
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
-    });
+const updateMarkMode = (enable: boolean): void => {
+  markMode = enable;
+  commands.executeCommand("setContext", "emacs.markMode", markMode);
+  markMode ? statusBarItem.show() : statusBarItem.hide();
+};
 
-    context.subscriptions.push(disposable);
+export function activate(context: ExtensionContext) {
+  context.subscriptions.push(
+    commands.registerCommand("emacsMarkMode.enter", () => {
+      updateMarkMode(true);
+    })
+  );
+
+  context.subscriptions.push(
+    commands.registerCommand("emacsMarkMode.exit", () => {
+      if (!markMode) {
+        return;
+      }
+      updateMarkMode(false);
+      commands.executeCommand("cancelSelection");
+    })
+  );
+
+  context.subscriptions.push(
+    window.onDidChangeTextEditorSelection(event => {
+      const hasSelection = !event.selections.every(
+        selection => selection.isEmpty
+      );
+      if (markMode && !hasSelection) {
+        // TODO: exchange
+        updateMarkMode(false);
+      } else if (!markMode && hasSelection) {
+        updateMarkMode(true);
+      }
+    })
+  );
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {
-}
+export function deactivate() {}
