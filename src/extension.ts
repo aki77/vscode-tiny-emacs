@@ -5,8 +5,20 @@ import {
   commands,
   ExtensionContext,
   StatusBarAlignment,
-  StatusBarItem
+  StatusBarItem,
+  Disposable
 } from "vscode";
+
+const multiComands: { name: string; actions: string[] }[] = [
+  {
+    name: "newLine",
+    actions: ["lineBreakInsert", "cursorDown"]
+  },
+  {
+    name: "copy",
+    actions: ["editor.action.clipboardCopyAction", "emacs.exitMarkMode"]
+  }
+];
 
 const statusBarItem: StatusBarItem = window.createStatusBarItem(
   StatusBarAlignment.Left
@@ -21,15 +33,31 @@ const updateMarkMode = (enable: boolean): void => {
   markMode ? statusBarItem.show() : statusBarItem.hide();
 };
 
+const registerMultiCommand = (
+  commandName: string,
+  actions: string[]
+): Disposable => {
+  return commands.registerCommand(`emacs.${commandName}`, async () => {
+    const promises = actions.map(action => commands.executeCommand(action));
+    for (let promise of promises) {
+      await promise;
+    }
+  });
+};
+
 export function activate(context: ExtensionContext) {
+  multiComands.forEach(({ name, actions }) => {
+    registerMultiCommand(name, actions);
+  });
+
   context.subscriptions.push(
-    commands.registerCommand("emacsMarkMode.enter", () => {
+    commands.registerCommand("emacs.enterMarkMode", () => {
       updateMarkMode(true);
     })
   );
 
   context.subscriptions.push(
-    commands.registerCommand("emacsMarkMode.exit", () => {
+    commands.registerCommand("emacs.exitMarkMode", () => {
       if (!markMode) {
         return;
       }

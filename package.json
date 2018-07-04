@@ -26,13 +26,83 @@
     "keybindings": [
       {
         "key": "ctrl+space",
-        "command": "emacsMarkMode.enter",
+        "command": "emacs.enterMarkMode",
         "when": "editorTextFocus"
       },
       {
         "key": "ctrl+g",
-        "command": "emacsMarkMode.exit",
+        "command": "emacs.exitMarkMode",
         "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeFindWidget",
+        "when": "editorFocus && findWidgetVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeReferenceSearchEditor",
+        "when": "inReferenceSearchEditor && !config.editor.stablePeek"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeReferenceSearch",
+        "when": "referenceSearchVisible && !config.editor.stablePeek"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "removeSecondaryCursors",
+        "when": "editorHasMultipleSelections && editorTextFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeBreakpointWidget",
+        "when": "breakpointWidgetVisible && editorFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "leaveSnippet",
+        "when": "editorTextFocus && inSnippetMode"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeMarkersNavigation",
+        "when": "editorFocus && markersNavigationVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeParameterHints",
+        "when": "editorTextFocus && parameterHintsVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "hideSuggestWidget",
+        "when": "editorTextFocus && suggestWidgetVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "cancelRenameInput",
+        "when": "editorFocus && renameInputVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeAccessibilityHelp",
+        "when": "accessibilityHelpWidgetVisible && editorFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "closeReplaceInFilesWidget",
+        "when": "replaceInputBoxFocus && searchViewletVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.closeMessages",
+        "when": "globalMessageVisible"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
       },
       {
         "key": "ctrl+f",
@@ -93,6 +163,176 @@
         "key": "alt+shift+,",
         "command": "cursorTopSelect",
         "when": "editorTextFocus && emacs.markMode"
+      },
+      {
+        "key": "alt+x",
+        "command": "workbench.action.showCommands"
+      },
+      {
+        "key": "alt+backspace",
+        "command": "deleteWordLeft",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+x ctrl+s",
+        "command": "workbench.action.files.save",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+h",
+        "command": "deleteLeft",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "alt+d",
+        "command": "deleteWordRight",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "alt+w",
+        "command": "emacs.copy",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+x",
+        "command": "editor.action.clipboardCutAction",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+y",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+i",
+        "command": "editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "shift+ctrl+i",
+        "command": "editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+c c",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+x 1",
+        "command": "workbench.action.closeEditorsInOtherGroups"
+      },
+      {
+        "key": "ctrl+x 2",
+        "command": "workbench.action.splitEditor"
+      },
+      {
+        "key": "ctrl+x 3",
+        "command": "workbench.action.toggleEditorGroupLayout"
+      },
+      {
+        "key": "ctrl+x o",
+        "command": "workbench.action.navigateEditorGroups"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "showPrevParameterHint",
+        "when": "editorTextFocus && parameterHintsVisible"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "showNextParameterHint",
+        "when": "editorTextFocus && parameterHintsVisible"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "selectPrevQuickFix",
+        "when": "editorFocus && quickFixWidgetVisible"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "selectNextQuickFix",
+        "when": "editorFocus && quickFixWidgetVisible"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+      },
+      {
+        "key": "ctrl+'",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+'",
+        "command": "toggleSuggestionDetails",
+        "when": "editorTextFocus && suggestWidgetVisible"
+      },
+      {
+        "key": "ctrl+shift+'",
+        "command": "editor.action.triggerParameterHints",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+m",
+        "command": "emacs.newLine",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+m",
+        "command": "workbench.action.acceptSelectedQuickOpenItem",
+        "when": "inQuickOpen"
+      },
+      {
+        "key": "ctrl+m",
+        "command": "list.select",
+        "when": "listFocus && !inputFocus"
+      },
+      {
+        "key": "ctrl+m",
+        "command": "acceptSelectedSuggestionOnEnter",
+        "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+      },
+      {
+        "key": "ctrl+s",
+        "command": "actions.find",
+        "when": "!findWidgetVisible"
+      },
+      {
+        "key": "alt+shift+5",
+        "command": "editor.action.startFindReplaceAction",
+        "when": "editorFocus"
+      },
+      {
+        "command": "editor.action.replaceOne",
+        "key": "ctrl+enter",
+        "when": "editorFocus && findWidgetVisible"
+      },
+      {
+        "key": "ctrl+s",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "findWidgetVisible"
+      },
+      {
+        "key": "ctrl+r",
+        "command": "actions.find",
+        "when": "!findWidgetVisible"
+      },
+      {
+        "key": "ctrl+r",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "findWidgetVisible"
+      },
+      {
+        "key": "ctrl+/",
+        "command": "undo",
+        "when": "textInputFocus && !editorReadonly"
       }
     ]
   },
@@ -109,5 +349,8 @@
     "tslint": "^5.8.0",
     "@types/node": "^7.0.43",
     "@types/mocha": "^2.2.42"
-  }
+  },
+  "extensionDependencies": [
+    "geddski.macros"
+  ]
 }
