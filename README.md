@@ -1,10 +1,10 @@
-# Emacs
+# Tiny Emacs
 
-Emacs-like experience in the VS Code.
+A tiny emacs like extension in the VS Code.
 
 ## Features
 
-- Marker
+- Marker can be used seamlessly with selection.
 
 ## Keybindings
 
@@ -18,4 +18,3 @@ Emacs-like experience in the VS Code.
 ## TODO
 
 - [ ] Regular Emacs key binding
-- [ ] Kill ring

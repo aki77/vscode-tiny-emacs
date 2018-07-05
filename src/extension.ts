@@ -47,7 +47,7 @@ const registerMultiCommand = (
 
 export function activate(context: ExtensionContext) {
   multiComands.forEach(({ name, actions }) => {
-    registerMultiCommand(name, actions);
+    context.subscriptions.push(registerMultiCommand(name, actions));
   });
 
   context.subscriptions.push(

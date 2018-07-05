@@ -1,7 +1,7 @@
 {
-  "name": "emacs",
-  "displayName": "Emacs",
-  "description": "Emacs-like experience in the VS Code.",
+  "name": "tiny-emacs",
+  "displayName": "Tiny Emacs",
+  "description": "A tiny emacs like extension in the VS Code.",
   "version": "0.0.1",
   "publisher": "aki77",
   "engines": {
@@ -12,11 +12,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/aki77/vscode-emacs.git"
+    "url": "https://github.com/aki77/vscode-tiny-emacs.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aki77/vscode-emacs/issues"
+    "url": "https://github.com/aki77/vscode-tiny-emacs/issues"
   },
   "activationEvents": [
     "*"
