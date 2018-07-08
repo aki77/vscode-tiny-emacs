@@ -8,14 +8,4 @@ A tiny emacs like extension in the VS Code.
 
 ## Keybindings
 
-### mark
-
-| Command   | Desc     |
-| --------- | -------- |
-| `C-g`     | Cancel   |
-| `C-space` | Set mark |
-
-## TODO
-
-aa
-- [ ] Regular Emacs key binding
+https://github.com/aki77/vscode-tiny-emacs/blob/master/package.json#L27-L358

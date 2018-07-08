@@ -4,6 +4,7 @@
   "description": "A tiny emacs like extension in the VS Code.",
   "version": "0.0.1",
   "publisher": "aki77",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.24.0"
   },
