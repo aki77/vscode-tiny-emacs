@@ -12,7 +12,7 @@ import {
 const multiComands: { name: string; actions: string[] }[] = [
   {
     name: "newLine",
-    actions: ["lineBreakInsert", "cursorDown"]
+    actions: ["lineBreakInsert", "cursorDown", "cursorEnd"]
   },
   {
     name: "copy",

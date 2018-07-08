@@ -146,8 +146,18 @@
       },
       {
         "key": "ctrl+v",
+        "command": "cursorPageDown",
+        "when": "editorTextFocus && !suggestWidgetVisible"
+      },
+      {
+        "key": "ctrl+v",
         "command": "cursorPageDownSelect",
         "when": "editorTextFocus && !suggestWidgetVisible && emacs.markMode"
+      },
+      {
+        "key": "alt+v",
+        "command": "cursorPageUp",
+        "when": "editorTextFocus && !suggestWidgetVisible"
       },
       {
         "key": "alt+v",
