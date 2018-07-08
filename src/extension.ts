@@ -45,6 +45,13 @@ const registerMultiCommand = (
   });
 };
 
+const hasMultipleSelections = () => {
+  const editor = window.activeTextEditor;
+  const selections = editor ? editor.selections : [];
+  const hasSelection = selections.some(selection => !selection.isEmpty);
+  return selections.length > 0 && hasSelection;
+};
+
 export function activate(context: ExtensionContext) {
   multiComands.forEach(({ name, actions }) => {
     context.subscriptions.push(registerMultiCommand(name, actions));
@@ -61,6 +68,13 @@ export function activate(context: ExtensionContext) {
       if (!markMode) {
         return;
       }
+
+      if (hasMultipleSelections()) {
+        // NOTE: clear selection, keep cursors
+        commands.executeCommand("cursorRight");
+        return;
+      }
+
       updateMarkMode(false);
       commands.executeCommand("cancelSelection");
     })

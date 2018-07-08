@@ -33,7 +33,7 @@
       {
         "key": "ctrl+g",
         "command": "emacs.exitMarkMode",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && emacs.markMode"
       },
       {
         "key": "ctrl+g",
@@ -53,7 +53,7 @@
       {
         "key": "ctrl+g",
         "command": "removeSecondaryCursors",
-        "when": "editorHasMultipleSelections && editorTextFocus"
+        "when": "editorHasMultipleSelections && editorTextFocus && !emacs.markMode"
       },
       {
         "key": "ctrl+g",
@@ -205,7 +205,7 @@
         "when": "textInputFocus"
       },
       {
-        "key": "ctrl+x",
+        "key": "ctrl+w",
         "command": "editor.action.clipboardCutAction",
         "when": "textInputFocus && !editorReadonly"
       },
@@ -354,6 +354,10 @@
         "key": "ctrl+/",
         "command": "undo",
         "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "key": "alt+g g",
+        "command": "workbench.action.gotoLine"
       }
     ]
   },
