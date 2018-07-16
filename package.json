@@ -2,7 +2,7 @@
   "name": "tiny-emacs",
   "displayName": "Tiny Emacs",
   "description": "A tiny emacs like extension in the VS Code.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "aki77",
   "icon": "images/icon.png",
   "engines": {
