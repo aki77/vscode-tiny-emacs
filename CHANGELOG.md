@@ -3,6 +3,7 @@
 ## 0.1.1
 
 - Workaround of window.showInputBox
+- Remove extensionDependencies
 
 ## 0.1.0
 
