@@ -9,7 +9,7 @@ import {
   Disposable
 } from "vscode";
 
-const multiComands: { name: string; actions: string[] }[] = [
+const emacsComands: { name: string; actions: string[] }[] = [
   {
     name: "newLine",
     actions: ["lineBreakInsert", "cursorDown", "cursorEnd"]
@@ -17,6 +17,11 @@ const multiComands: { name: string; actions: string[] }[] = [
   {
     name: "copy",
     actions: ["editor.action.clipboardCopyAction", "emacs.exitMarkMode"]
+  },
+  // NOTE: Workaround of window.showInputBox
+  {
+    name: "paste",
+    actions: ["editor.action.clipboardPasteAction"]
   }
 ];
 
@@ -33,7 +38,7 @@ const updateMarkMode = (enable: boolean): void => {
   markMode ? statusBarItem.show() : statusBarItem.hide();
 };
 
-const registerMultiCommand = (
+const registerEmacsCommand = (
   commandName: string,
   actions: string[]
 ): Disposable => {
@@ -53,8 +58,8 @@ const hasMultipleSelections = () => {
 };
 
 export function activate(context: ExtensionContext) {
-  multiComands.forEach(({ name, actions }) => {
-    context.subscriptions.push(registerMultiCommand(name, actions));
+  emacsComands.forEach(({ name, actions }) => {
+    context.subscriptions.push(registerEmacsCommand(name, actions));
   });
 
   context.subscriptions.push(

@@ -211,7 +211,7 @@
       },
       {
         "key": "ctrl+y",
-        "command": "editor.action.clipboardPasteAction",
+        "command": "emacs.paste",
         "when": "textInputFocus && !editorReadonly"
       },
       {

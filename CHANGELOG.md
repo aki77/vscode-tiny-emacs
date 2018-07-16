@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.1
+
+- Workaround of window.showInputBox
+
 ## 0.1.0
 
 - Support for multi cursor mark
