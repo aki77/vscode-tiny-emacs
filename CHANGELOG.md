@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.2
+
+- Update editor group keybindings
+
 ## 0.1.1
 
 - Workaround of window.showInputBox

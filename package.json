@@ -230,16 +230,20 @@
         "when": "editorTextFocus && !editorReadonly"
       },
       {
+        "key": "ctrl+x 0",
+        "command": "workbench.action.joinTwoGroups"
+      },
+      {
         "key": "ctrl+x 1",
         "command": "workbench.action.closeEditorsInOtherGroups"
       },
       {
         "key": "ctrl+x 2",
-        "command": "workbench.action.splitEditor"
+        "command": "workbench.action.splitEditorOrthogonal"
       },
       {
         "key": "ctrl+x 3",
-        "command": "workbench.action.toggleEditorGroupLayout"
+        "command": "workbench.action.splitEditorRight"
       },
       {
         "key": "ctrl+x o",
