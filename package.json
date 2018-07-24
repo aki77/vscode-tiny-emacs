@@ -215,6 +215,11 @@
         "when": "textInputFocus && !editorReadonly"
       },
       {
+        "key": "ctrl+k",
+        "command": "emacs.cutLine",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
         "key": "ctrl+i",
         "command": "editor.action.indentLines",
         "when": "editorTextFocus && !editorReadonly"

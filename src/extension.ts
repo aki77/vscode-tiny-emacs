@@ -18,6 +18,10 @@ const emacsComands: { name: string; actions: string[] }[] = [
     name: "copy",
     actions: ["editor.action.clipboardCopyAction", "emacs.exitMarkMode"]
   },
+  {
+    name: "cutLine",
+    actions: ["cursorEndSelect", "editor.action.clipboardCutAction"]
+  },
   // NOTE: Workaround of window.showInputBox
   {
     name: "paste",

@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.3
+
+- Add emacs.cutLine
+
 ## 0.1.2
 
 - Update editor group keybindings
